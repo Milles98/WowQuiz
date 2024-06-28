@@ -3,8 +3,35 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="WowQuiz.MainPage">
 
-    <VerticalStackLayout Spacing="25" Padding="30" VerticalOptions="Center">
-        <Button x:Name="startButton" Text="Begin Quiz" Clicked="OnStartButtonClicked"/>
-    </VerticalStackLayout>
+    <Grid RowDefinitions="*,*"
+          ColumnDefinitions="*">
+        
+        <Label Grid.Row="0" 
+               Text="Hello and welcome to the WowQuiz app!"
+               HorizontalOptions="Center"
+               VerticalOptions="Start"
+               FontSize="16"
+               FontAttributes="Bold"/>
+        
+        <Button Grid.Row="1"
+                x:Name="StartButton"
+                Text="Begin Quiz"
+                Clicked="OnStartButtonClicked"
+                Margin="20, 0, 20, 0"
+                VerticalOptions="Center"/>
+        
+    </Grid>
+    
+    
+    <!-- <VerticalStackLayout Spacing="25" Padding="30" VerticalOptions="Start"> -->
+    <!--     <Label Text="Hello and welcome to the WowQuiz app!" -->
+    <!--            HorizontalOptions="Center" -->
+    <!--            FontSize="16" -->
+    <!--            FontAttributes="Bold"/> -->
+    <!--     <Button x:Name="StartButton"  -->
+    <!--             Text="Begin Quiz"  -->
+    <!--             Clicked="OnStartButtonClicked" -->
+    <!--             VerticalOptions="End"/> -->
+    <!-- </VerticalStackLayout> -->
 
 </ContentPage>
