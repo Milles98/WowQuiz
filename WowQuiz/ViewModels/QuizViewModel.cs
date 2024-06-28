@@ -22,7 +22,10 @@ namespace WowQuiz.ViewModels
         private readonly IQuestionService _questionService;
 
         private int _currentQuestionIndex = -1;
+
         private int _correctAnswersCount = 0;
+
+        public string QuestionTracker => $"Question {_currentQuestionIndex + 1}/{Questions.Count}";
 
         public ObservableCollection<Question> Questions { get; } = new ObservableCollection<Question>();
 
@@ -67,6 +70,7 @@ namespace WowQuiz.ViewModels
             {
                 _currentQuestionIndex++;
                 CurrentQuestion = Questions[_currentQuestionIndex];
+                OnPropertyChanged(nameof(QuestionTracker));
             }
             else
             {
