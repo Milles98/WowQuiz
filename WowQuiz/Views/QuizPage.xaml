@@ -5,10 +5,6 @@
              xmlns:vm="clr-namespace:WowQuiz.ViewModels"
              Title="QuizPage">
 
-    <ContentPage.BindingContext>
-        <vm:QuizViewModel/>
-    </ContentPage.BindingContext>
-
     <!-- quiz ui here -->
     <ScrollView>
         <VerticalStackLayout Spacing="25" Padding="30">
