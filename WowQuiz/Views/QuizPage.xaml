@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="WowQuiz.Views.QuizPage"
              xmlns:vm="clr-namespace:WowQuiz.ViewModels"
-             Title="QuizPage">
+             Title="QuizPage"
+             x:Name="quizPage">
 
     <!-- quiz ui here -->
     <ScrollView>
@@ -14,12 +15,13 @@
                     <DataTemplate>
                         <Button Text="{Binding .}"
                                 Command="{Binding Path=BindingContext.CheckAnswerCommand, Source={x:Reference quizPage}}"
-                                CommandParameter="{Binding Source={x:Reference Name=ListView}, Path=Index}"
+                                CommandParameter="{Binding .}"
                                 Margin="5"/>
                     </DataTemplate>
                 </BindableLayout.ItemTemplate>
             </StackLayout>
-            <Label Text="{Binding FeedbackMessage}" FontSize="18" TextColor="Red"/>
+            <!--<Label Text="{Binding FeedbackMessage}" FontSize="18" TextColor="Red"/>-->
+            <!-- Not sure if im going to use this above -->
         </VerticalStackLayout>
     </ScrollView>
 
