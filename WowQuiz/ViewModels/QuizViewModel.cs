@@ -18,7 +18,9 @@ namespace WowQuiz.ViewModels
 
         [ObservableProperty]
         private string _feedbackMessage = string.Empty;
+
         private readonly IQuestionService _questionService;
+
         private int _currentQuestionIndex = -1;
 
         public ObservableCollection<Question> Questions { get; } = new ObservableCollection<Question>();
@@ -40,9 +42,9 @@ namespace WowQuiz.ViewModels
         }
 
         [RelayCommand]
-        public async Task CheckAnswer(int selectIndex)
+        public async Task CheckAnswer(string selectedAnswer)
         {
-            bool isCorrect = selectIndex == CurrentQuestion.CorrectAnswerIndex;
+            bool isCorrect = selectedAnswer == CurrentQuestion.Answers[CurrentQuestion.CorrectAnswerIndex];
 
             FeedbackMessage = isCorrect ? "Correct!" : "False!";
 
@@ -51,8 +53,10 @@ namespace WowQuiz.ViewModels
             MoveToNextQuestion();
         }
 
+
         private void MoveToNextQuestion()
         {
+            FeedbackMessage = string.Empty;
             if (_currentQuestionIndex + 1 < Questions.Count)
             {
                 _currentQuestionIndex++;
