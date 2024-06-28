@@ -10,5 +10,21 @@
     </ContentPage.BindingContext>
 
     <!-- quiz ui here -->
+    <ScrollView>
+        <VerticalStackLayout Spacing="25" Padding="30">
+            <Label Text="{Binding CurrentQuestion.QuestionText}" FontSize="24"/>
+            <StackLayout BindableLayout.ItemsSource="{Binding CurrentQuestion.Answers}">
+                <BindableLayout.ItemTemplate>
+                    <DataTemplate>
+                        <Button Text="{Binding .}"
+                                Command="{Binding Path=BindingContext.CheckAnswerCommand, Source={x:Reference quizPage}}"
+                                CommandParameter="{Binding Source={x:Reference Name=ListView}, Path=Index}"
+                                Margin="5"/>
+                    </DataTemplate>
+                </BindableLayout.ItemTemplate>
+            </StackLayout>
+            <Label Text="{Binding FeedbackMessage}" FontSize="18" TextColor="Red"/>
+        </VerticalStackLayout>
+    </ScrollView>
 
 </ContentPage>
