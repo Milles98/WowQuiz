@@ -1,6 +1,6 @@
-# Quiz Application
+# Wow Quiz Application
 
-This Quiz Application is a fun and interactive way to test your knowledge on a variety of topics. Built with .NET MAUI, it offers a cross-platform experience for users on Windows, macOS, Android, and iOS.
+This Quiz Application is a fun and interactive way to test your knowledge on a variety of questions from World of Warcraft. Built with .NET MAUI, it offers a cross-platform experience for users on Windows, macOS, Android, and iOS.
 
 ## Features
 
