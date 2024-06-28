@@ -1,4 +1,6 @@
-﻿namespace WowQuiz
+﻿using WowQuiz.Views;
+
+namespace WowQuiz
 {
     public partial class MainPage : ContentPage
     {
