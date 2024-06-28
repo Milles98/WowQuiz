@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WowQuiz.Models;
+using WowQuiz.Services;
 
 namespace WowQuiz.ViewModels
 {
@@ -17,12 +18,25 @@ namespace WowQuiz.ViewModels
 
         [ObservableProperty]
         private string _feedbackMessage;
+        private readonly IQuestionService _questionService;
+        private int _currentQuestionIndex = -1;
 
         public ObservableCollection<Question> Questions { get; } = new ObservableCollection<Question>();
 
-        public QuizViewModel()
+        public QuizViewModel(IQuestionService questionService)
         {
-            //ladda frågorna här
+            _questionService = questionService;
+            LoadQuestionsAsync();
+        }
+
+        private async void LoadQuestionsAsync()
+        {
+            var questions = await _questionService.GetQuestionsAsync();
+            foreach (var question in questions)
+            {
+                Questions.Add(question);
+            }
+            MoveToNextQuestion();
         }
 
         [RelayCommand]
@@ -39,9 +53,15 @@ namespace WowQuiz.ViewModels
 
         private void MoveToNextQuestion()
         {
-            // Example logic to move to the next question
-            // This could involve updating the CurrentQuestion property
-            // and resetting any necessary state for the next question
+            if (_currentQuestionIndex + 1 < Questions.Count)
+            {
+                _currentQuestionIndex++;
+                CurrentQuestion = Questions[_currentQuestionIndex];
+            }
+            else
+            {
+                Shell.Current.DisplayAlert("Quiz Completed", "You have completed the Quiz!", "OK");
+            }
         }
     }
 }

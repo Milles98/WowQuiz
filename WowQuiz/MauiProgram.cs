@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
+using WowQuiz.Services;
 
 namespace WowQuiz
 {
@@ -15,8 +16,10 @@ namespace WowQuiz
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 });
 
+            builder.Services.AddSingleton<IQuestionService, QuestionService>();
+
 #if DEBUG
-    		builder.Logging.AddDebug();
+            builder.Logging.AddDebug();
 #endif
 
             return builder.Build();

@@ -25,6 +25,7 @@ namespace WowQuiz.Services
                     Answers = new List<string> {"Ner'zhul", "Illidan Stormrage", "Bolvar Fordragon", "Kil'jaeden"},
                     CorrectAnswerIndex = 0
                 }
+                //kan lägga till fler frågor
             };
         }
     }
