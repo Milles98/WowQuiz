@@ -22,6 +22,7 @@ namespace WowQuiz.ViewModels
         private readonly IQuestionService _questionService;
 
         private int _currentQuestionIndex = -1;
+        private int _correctAnswersCount = 0;
 
         public ObservableCollection<Question> Questions { get; } = new ObservableCollection<Question>();
 
@@ -46,6 +47,11 @@ namespace WowQuiz.ViewModels
         {
             bool isCorrect = selectedAnswer == CurrentQuestion.Answers[CurrentQuestion.CorrectAnswerIndex];
 
+            if (isCorrect)
+            {
+                _correctAnswersCount++;
+            }
+
             FeedbackMessage = isCorrect ? "Correct!" : "False!";
 
             await Shell.Current.DisplayAlert("Result", FeedbackMessage, "Go to the next question");
@@ -64,7 +70,11 @@ namespace WowQuiz.ViewModels
             }
             else
             {
-                Shell.Current.DisplayAlert("Quiz Completed", "You have completed the Quiz!", "OK");
+                Shell.Current.DisplayAlert("Quiz Completed", $"You got {_correctAnswersCount} out of {Questions.Count} questions correct! ", "OK")
+                    .ContinueWith(t =>
+                    {
+                        Shell.Current.GoToAsync("//MainPage");
+                    }, TaskScheduler.FromCurrentSynchronizationContext());
             }
         }
     }
