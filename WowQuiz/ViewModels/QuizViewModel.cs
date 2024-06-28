@@ -26,16 +26,22 @@ namespace WowQuiz.ViewModels
         }
 
         [RelayCommand]
-        public void CheckAnswer(int selectIndex)
+        public async void CheckAnswer(int selectIndex)
         {
-            if (selectIndex == CurrentQuestion.CorrectAnswerIndex)
-            {
-                FeedbackMessage = "Correct!";
-            }
-            else
-            {
-                FeedbackMessage = "False!";
-            }
+            bool isCorrect = selectIndex == CurrentQuestion.CorrectAnswerIndex;
+
+            FeedbackMessage = isCorrect ? "Correct!" : "False!";
+
+            await Shell.Current.DisplayAlert("Result", FeedbackMessage, "Go to the next question");
+
+            MoveToNextQuestion();
+        }
+
+        private void MoveToNextQuestion()
+        {
+            // Example logic to move to the next question
+            // This could involve updating the CurrentQuestion property
+            // and resetting any necessary state for the next question
         }
     }
 }
