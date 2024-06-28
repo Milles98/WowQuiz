@@ -14,10 +14,10 @@ namespace WowQuiz.ViewModels
     public partial class QuizViewModel : ObservableObject
     {
         [ObservableProperty]
-        private Question _currentQuestion;
+        private Question? _currentQuestion;
 
         [ObservableProperty]
-        private string _feedbackMessage;
+        private string _feedbackMessage = string.Empty;
         private readonly IQuestionService _questionService;
         private int _currentQuestionIndex = -1;
 
@@ -29,7 +29,7 @@ namespace WowQuiz.ViewModels
             LoadQuestionsAsync();
         }
 
-        private async void LoadQuestionsAsync()
+        private async Task LoadQuestionsAsync()
         {
             var questions = await _questionService.GetQuestionsAsync();
             foreach (var question in questions)
@@ -40,7 +40,7 @@ namespace WowQuiz.ViewModels
         }
 
         [RelayCommand]
-        public async void CheckAnswer(int selectIndex)
+        public async Task CheckAnswer(int selectIndex)
         {
             bool isCorrect = selectIndex == CurrentQuestion.CorrectAnswerIndex;
 
