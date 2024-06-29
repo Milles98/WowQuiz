@@ -8,8 +8,8 @@ namespace WowQuiz.Models
 {
     public class Question
     {
-        public string QuestionText { get; set; }
-        public List<string> Answers { get; set; }
-        public int CorrectAnswerIndex { get; set; }
+        public string QuestionText { get; set; } = null!;
+        public List<string> Answers { get; set; } = null!;
+        public int CorrectAnswerIndex { get; init; }
     }
 }
