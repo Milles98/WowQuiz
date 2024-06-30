@@ -26,3 +26,10 @@ namespace WowQuiz
         }
     }
 }
+
+/*Att vilja göra
+ * Gör så att quiz frågor hämtas från ett API eller skapa själv API
+ * Ändra startsidan att välja mellan olika wow quiz kategorier
+ * koppla till databas och skapa användare som kan spara sina resultat
+ * skapa något reward system för att få användare att spela mer
+*/
