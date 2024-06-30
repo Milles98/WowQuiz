@@ -71,11 +71,50 @@ public partial class QuizViewModel : ObservableObject
         }
         else
         {
-            Shell.Current.DisplayAlert("Quiz Completed", $"You got {_correctAnswersCount} out of {Questions.Count} questions correct! ", "OK")
-                .ContinueWith(_ =>
-                {
-                    Shell.Current.GoToAsync("//MainPage");
-                }, TaskScheduler.FromCurrentSynchronizationContext());
+            DisplayQuizCompletedOptions();
+            // Shell.Current.DisplayAlert("Quiz Completed", $"You got {_correctAnswersCount} out of {Questions.Count} questions correct! ", "OK")
+            //     .ContinueWith(_ =>
+            //     {
+            //         Shell.Current.GoToAsync("//MainPage");
+            //     }, TaskScheduler.FromCurrentSynchronizationContext());
         }
+    }
+
+    private async void DisplayCompletionInfo()
+    {
+        await Shell.Current.DisplayAlert(
+            "Quiz Completed",
+            $"You got {_correctAnswersCount} out of {Questions.Count} questions correct!",
+            "OK"
+        );
+
+        DisplayQuizCompletedOptions();
+    }
+
+    private async void DisplayQuizCompletedOptions()
+    {
+        var action = await Shell.Current.DisplayActionSheet(
+            "Quiz Completed",
+            "Cancel",
+            null,
+            "Go to the main page",
+            "Try Again"
+            );
+        
+        if(action == "Go to the main page")
+        {
+            Shell.Current.GoToAsync("//MainPage");
+        }
+        else if(action == "Try Again")
+        {
+            RestartQuiz();
+        }
+    }
+
+    private void RestartQuiz()
+    {
+        _currentQuestionIndex = -1;
+        _correctAnswersCount = 0;
+        MoveToNextQuestion();
     }
 }
