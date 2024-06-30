@@ -53,6 +53,8 @@ public partial class QuizViewModel : ObservableObject
         FeedbackMessage = isCorrect ? "Correct!" : "False!";
 
         await Shell.Current.DisplayAlert("Result", FeedbackMessage, "Go to the next question");
+        // await Shell.Current.Navigation.PushModalAsync(
+        //     new CustomAlertPage("Result", FeedbackMessage, "Go to the next question", isCorrect ? Colors.Green : Colors.Red));
 
         MoveToNextQuestion();
     }
