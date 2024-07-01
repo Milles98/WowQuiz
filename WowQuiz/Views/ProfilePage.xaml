@@ -11,25 +11,41 @@
 
         <StackLayout Padding="20">
             <Label Grid.Row="0" 
-                   Text="Welcome to your profilepage, below you can change"/>
+                   Text="Welcome to your profilepage"
+                   Margin="0, 0, 0, 30"
+                   FontSize="24"/>
             
             <!--Username-->
-            <Label Grid.Row="1" Text="Name"/>
+            <Label Grid.Row="1" Text="Name"
+                   Margin="4, 0, 0, 0"
+                   FontAttributes="Bold"
+                   FontSize="18"/>
             <Entry Grid.Row="2" Text="{Binding Name, Mode=TwoWay}" Placeholder="Name"/>
 
             <!--Password-->
-            <Label Grid.Row="3" Text="Password"/>
+            <Label Grid.Row="3" Text="Password"
+                   Margin="4, 20, 0, 0"
+                   FontAttributes="Bold"
+                   FontSize="18"/>
             <Entry Grid.Row="4" Text="{Binding Password, Mode=TwoWay}" Placeholder="Password"/>
 
             <!--Email-->
-            <Label Grid.Row="5" Text="Email"/>
+            <Label Grid.Row="5" Text="Email"
+                   Margin="4, 20, 0, 0"
+                   FontAttributes="Bold"
+                   FontSize="18"/>
             <Entry Grid.Row="6" Text="{Binding Email, Mode=TwoWay}" Placeholder="Email"/>
 
             <!--Role-->
-            <Label Grid.Row="7" Text="Role"/>
+            <Label Grid.Row="7" Text="Role"
+                   Margin="4, 20, 0, 0"
+                   FontAttributes="Bold"
+                   FontSize="18"/>
             <Entry Grid.Row="8" Text="{Binding Role, Mode=TwoWay}" Placeholder="Role"/>
 
-            <Button Grid.Row="9" Text="Save Changes" Command="{Binding SaveChangesCommand}"/>
+            <Button Grid.Row="9" Text="Save Changes"
+                    Margin="0, 30, 0, 0"
+                    Command="{Binding SaveChangesCommand}"/>
         </StackLayout>
 
     </Grid>
