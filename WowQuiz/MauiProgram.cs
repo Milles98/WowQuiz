@@ -1,5 +1,8 @@
 ﻿using Microsoft.Extensions.Logging;
+using WowQuiz.Data;
 using WowQuiz.Services;
+using WowQuiz.ViewModels;
+using WowQuiz.Views;
 
 namespace WowQuiz
 {
@@ -16,7 +19,11 @@ namespace WowQuiz
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 });
 
+            builder.Services.AddDbContext<QuizContext>();
             builder.Services.AddSingleton<IQuestionService, QuestionService>();
+            builder.Services.AddTransient<QuizViewModel>();
+            builder.Services.AddTransient<QuizPage>();
+            builder.Services.AddTransient<MainPage>();
 
 #if DEBUG
             builder.Logging.AddDebug();

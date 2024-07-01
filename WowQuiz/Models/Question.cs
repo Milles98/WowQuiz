@@ -1,15 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace WowQuiz.Models
 {
     public class Question
     {
+        public int Id { get; set; }
         public string QuestionText { get; set; } = null!;
-        public List<string> Answers { get; set; } = null!;
+
+        [NotMapped]
+        public List<string> Answers
+        {
+            get => AnswersAsString.Split(';').ToList();
+            set => AnswersAsString = string.Join(';', value);
+        }
+
+        public string AnswersAsString { get; set; } = null!;
         public int CorrectAnswerIndex { get; init; }
     }
 }
