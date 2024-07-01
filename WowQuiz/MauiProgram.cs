@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using Microsoft.Extensions.Logging;
 using WowQuiz.Data;
 using WowQuiz.Services;
 using WowQuiz.ViewModels;
@@ -19,14 +20,24 @@ namespace WowQuiz
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 });
 
+            // Database
             builder.Services.AddDbContext<QuizContext>();
-            builder.Services.AddSingleton<IQuestionService, QuestionService>();
+            
+            // ViewModels
             builder.Services.AddTransient<LoginViewModel>();
-            builder.Services.AddTransient<LoginView>();
-            builder.Services.AddTransient<ILoginService, LoginService>();
             builder.Services.AddTransient<QuizViewModel>();
+            builder.Services.AddTransient<RegisterViewModel>();
+            
+            // Services
+            builder.Services.AddSingleton<IQuestionService, QuestionService>();
+            builder.Services.AddTransient<ILoginService, LoginService>();
+            builder.Services.AddTransient<IRegisterService, RegisterService>();
+            
+            // Views
+            builder.Services.AddTransient<LoginView>();
             builder.Services.AddTransient<QuizPage>();
             builder.Services.AddTransient<MainPage>();
+            builder.Services.AddTransient<RegisterView>();
 
 #if DEBUG
             builder.Logging.AddDebug();
@@ -40,7 +51,7 @@ namespace WowQuiz
 /*Att vilja göra
  * Gör så att quiz frågor hämtas från ett API eller skapa själv API
  * Ändra startsidan att välja mellan olika wow quiz kategorier
- * skapa användare som kan spara sina resultat och se statistik
+ * låt användare spara sina resultat och se statistik
  * skapa något reward system för att få användare att spela mer
  * skapa en admin sida för att lägga till nya frågor
  * gör inloggningssida så att användare registrerar och loggar in
@@ -48,4 +59,5 @@ namespace WowQuiz
  
  * Klart
  * koppla till databas
+ * skapa användare
 */

@@ -4,12 +4,27 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:WowQuiz"
+    xmlns:views="clr-namespace:WowQuiz.Views"
     Shell.FlyoutBehavior="Disabled"
     Title="WowQuiz">
 
+    <!-- MainPage -->
     <ShellContent
         Title="Home"
         ContentTemplate="{DataTemplate local:MainPage}"
         Route="MainPage" />
+    
+    <!-- LoginPage -->
+    <ShellContent
+        Title="Login"
+        ContentTemplate="{DataTemplate views:LoginView}"
+        Route="LoginView" />
+    
+    <!-- RegisterPage -->
+    <ShellContent
+        Title="Register"
+        ContentTemplate="{DataTemplate views:RegisterView}"
+        Route="RegisterView"/>
+    
 
 </Shell>

@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:WowQuiz.Views"
+             xmlns:viewModels="clr-namespace:WowQuiz.ViewModels"
+             x:Class="WowQuiz.Views.RegisterView"
+             x:DataType="viewModels:RegisterViewModel"
+             BackgroundColor="White">
+
+    <ContentPage.Content>
+        <StackLayout Padding="30" VerticalOptions="Center">
+            <Label Text="Register" 
+                   FontSize="24"
+                   HorizontalOptions="Center"
+                   Margin="0,0,0,20"/>
+            <Entry Placeholder="Name" 
+                   Text="{Binding Name}"
+                   Margin="0,0,0,10"/>
+            <Entry Placeholder="Email" 
+                   Text="{Binding Email}"
+                   Keyboard="Email"
+                   Margin="0,0,0,10"/>
+            <Entry Placeholder="Password" 
+                   Text="{Binding Password}" 
+                   IsPassword="True"
+                   Margin="0,0,0,20"/>
+            <Button Text="Register" 
+                    Clicked="OnRegisterButtonClicked"
+                    BackgroundColor="#28a745"
+                    TextColor="White"
+                    CornerRadius="5"
+                    Margin="0,0,0,10"/>
+            <Label Text="{Binding RegistrationMessage}"
+                   TextColor="Red"
+                   HorizontalOptions="Center"
+                   Margin="0,20,0,0"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
