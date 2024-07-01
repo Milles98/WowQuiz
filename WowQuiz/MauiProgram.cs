@@ -22,18 +22,20 @@ namespace WowQuiz
 
             // Database
             builder.Services.AddDbContext<QuizContext>();
-            
+
             // ViewModels
             builder.Services.AddTransient<LoginViewModel>();
             builder.Services.AddTransient<QuizViewModel>();
             builder.Services.AddTransient<RegisterViewModel>();
             builder.Services.AddSingleton<MainViewModel>();
-            
+            builder.Services.AddTransient<ProfileViewModel>();
+
             // Services
             builder.Services.AddSingleton<IQuestionService, QuestionService>();
             builder.Services.AddTransient<ILoginService, LoginService>();
             builder.Services.AddTransient<IRegisterService, RegisterService>();
-            
+            builder.Services.AddTransient<IProfileService, ProfileService>();
+
             // Views
             builder.Services.AddTransient<LoginView>();
             builder.Services.AddTransient<QuizPage>();
