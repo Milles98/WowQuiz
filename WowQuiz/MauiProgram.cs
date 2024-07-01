@@ -56,10 +56,10 @@ namespace WowQuiz
  * låt användare spara sina resultat och se statistik
  * skapa något reward system för att få användare att spela mer
  * skapa en admin sida för att lägga till nya frågor
- * gör inloggningssida så att användare registrerar och loggar in
  
  
  * Klart
  * koppla till databas
  * skapa användare
+ * gör inloggningssida så att användare registrerar och loggar in
 */
