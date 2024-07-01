@@ -27,9 +27,9 @@ namespace WowQuiz.ViewModels
         [RelayCommand]
         private async Task RegisterAsync(INavigation navigation)
         {
-            var success = await _registerService.RegisterUserAsync(Name, Email, Password);
+            var userId = await _registerService.RegisterUserAsync(Name, Email, Password);
 
-            if (success)
+            if (userId != null)
             {
                 await Shell.Current.DisplayAlert("Success", "Registration successful", "OK");
                 await navigation.PopAsync(); // Go back to the login page
@@ -39,5 +39,6 @@ namespace WowQuiz.ViewModels
                 await Shell.Current.DisplayAlert("Error", "Registration failed", "OK");
             }
         }
+
     }
 }

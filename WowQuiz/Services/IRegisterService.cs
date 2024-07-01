@@ -2,5 +2,5 @@
 
 public interface IRegisterService
 {
-    Task<bool> RegisterUserAsync(string name, string email, string password);
+    Task<int?> RegisterUserAsync(string name, string email, string password);
 }

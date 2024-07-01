@@ -13,23 +13,24 @@ public class RegisterService : IRegisterService
         _context = context;
     }
 
-    public async Task<bool> RegisterUserAsync(string name, string email, string password)
+    public async Task<int?> RegisterUserAsync(string name, string email, string password)
     {
         if (await _context.Users.AnyAsync(u => u.Email == email))
         {
-            return false; // User already exists
+            return null; // User already exists
         }
 
         var user = new User
         {
             Name = name,
             Email = email,
-            Password = password,
+            Password = password, // Consider hashing the password
             Role = "User"
         };
 
         _context.Users.Add(user);
         await _context.SaveChangesAsync();
-        return true;
+        return user.Id; // Return the newly registered user's ID
     }
+
 }
