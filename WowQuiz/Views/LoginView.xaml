@@ -32,10 +32,6 @@
                     BackgroundColor="#28a745"
                     TextColor="White"
                     CornerRadius="5"/>
-            <Label Text="{Binding LoginMessage}"
-                   TextColor="Red"
-                   HorizontalOptions="Center"
-                   Margin="0,20,0,0"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
