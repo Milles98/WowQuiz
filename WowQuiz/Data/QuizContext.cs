@@ -6,6 +6,7 @@ namespace WowQuiz.Data;
 public class QuizContext : DbContext
 {
     public DbSet<Question> Questions { get; set; }
+    public DbSet<User> Users { get; set; }
 
     public QuizContext()
     {
