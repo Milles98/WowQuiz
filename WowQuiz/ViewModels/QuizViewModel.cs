@@ -71,7 +71,7 @@ public partial class QuizViewModel : ObservableObject
         }
         else
         {
-            DisplayQuizCompletedOptions();
+            DisplayCompletionInfo();
             // Shell.Current.DisplayAlert("Quiz Completed", $"You got {_correctAnswersCount} out of {Questions.Count} questions correct! ", "OK")
             //     .ContinueWith(_ =>
             //     {

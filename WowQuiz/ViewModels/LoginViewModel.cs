@@ -31,6 +31,9 @@ public partial class LoginViewModel : ObservableObject
         var user = await _loginService.LoginAsync(Email, Password);
         if (user is not null)
         {
+            var mainViewModel = _serviceProvider.GetRequiredService<MainViewModel>();
+            mainViewModel.SetCurrentUser(user);
+            
             await Shell.Current.DisplayAlert("Success", "Login successful", "OK");
             var mainPage = _serviceProvider.GetRequiredService<MainPage>();
             await Shell.Current.GoToAsync("//MainPage", true);

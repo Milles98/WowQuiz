@@ -1,45 +1,51 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="WowQuiz.MainPage">
-
-    <Grid RowDefinitions="*,*,*,*,*,*"
+             x:Class="WowQuiz.MainPage"
+             xmlns:vm="clr-namespace:WowQuiz.ViewModels"
+               x:DataType="vm:MainViewModel"
+             >
+    <Grid RowDefinitions="Auto,*,*,*,*,*,*"
           ColumnDefinitions="*">
+        
+        <!-- Top Section for User Name and Profile Button -->
+        <StackLayout Orientation="Horizontal" 
+                     VerticalOptions="Center"
+                     HorizontalOptions="Center"
+                     Grid.Row="0">
+            <Label x:Name="UserNameLabel"
+                   Text="{Binding UserName}"
+                   Margin="0, 10, 10, 0"
+                   VerticalOptions="Center"
+                   HorizontalOptions="Start"/>
+            <Button Text="Profile"
+                    Clicked="OnProfileButtonClicked"
+                    Margin="10, 10, 0, 0"
+                    VerticalOptions="Center"
+                    HorizontalOptions="End"/>
+        </StackLayout>
 
-        <Label Grid.Row="1" 
+        <!-- Main Content -->
+        <Label Grid.Row="2"
                Text="Welcome to the Wow Quiz app!"
                HorizontalOptions="Center"
                VerticalOptions="Start"
                FontSize="16"
                FontAttributes="Bold"/>
-
-        <Label Grid.Row="2"
-               Text="In this quiz, you will recieve 7 questions that will test your knowledge of how well you know the famous game World of Warcraft."
+        
+        <Label Grid.Row="3"
+               Text="In this quiz, you will receive 7 questions that will test your knowledge of how well you know the famous game World of Warcraft."
                HorizontalOptions="Center"
                VerticalOptions="Center"
                HorizontalTextAlignment="Center"
                FontSize="14"
                Margin="20, 0, 20, 0"/>
-
-        <Button Grid.Row="3"
+        
+        <Button Grid.Row="4"
                 x:Name="StartButton"
                 Text="Begin Quiz"
                 Clicked="OnStartButtonClicked"
                 Margin="20, 0, 20, 0"
                 VerticalOptions="Center"/>
-
     </Grid>
-
-
-    <!-- <VerticalStackLayout Spacing="25" Padding="30" VerticalOptions="Start"> -->
-    <!--     <Label Text="Hello and welcome to the WowQuiz app!" -->
-    <!--            HorizontalOptions="Center" -->
-    <!--            FontSize="16" -->
-    <!--            FontAttributes="Bold"/> -->
-    <!--     <Button x:Name="StartButton"  -->
-    <!--             Text="Begin Quiz"  -->
-    <!--             Clicked="OnStartButtonClicked" -->
-    <!--             VerticalOptions="End"/> -->
-    <!-- </VerticalStackLayout> -->
-
 </ContentPage>

@@ -27,6 +27,7 @@ namespace WowQuiz
             builder.Services.AddTransient<LoginViewModel>();
             builder.Services.AddTransient<QuizViewModel>();
             builder.Services.AddTransient<RegisterViewModel>();
+            builder.Services.AddSingleton<MainViewModel>();
             
             // Services
             builder.Services.AddSingleton<IQuestionService, QuestionService>();
@@ -36,8 +37,9 @@ namespace WowQuiz
             // Views
             builder.Services.AddTransient<LoginView>();
             builder.Services.AddTransient<QuizPage>();
-            builder.Services.AddTransient<MainPage>();
+            builder.Services.AddSingleton<MainPage>();
             builder.Services.AddTransient<RegisterView>();
+            builder.Services.AddTransient<ProfilePage>();
 
 #if DEBUG
             builder.Logging.AddDebug();
