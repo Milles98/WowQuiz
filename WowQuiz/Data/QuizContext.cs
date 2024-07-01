@@ -11,7 +11,8 @@ public class QuizContext : DbContext
     public QuizContext()
     {
         SQLitePCL.Batteries_V2.Init();
-        
+
+        // Database.EnsureDeleted();
         Database.EnsureCreated();
     }
     
