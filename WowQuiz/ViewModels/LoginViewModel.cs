@@ -18,9 +18,6 @@ public partial class LoginViewModel : ObservableObject
     [ObservableProperty]
     private string _password = string.Empty;
     
-    [ObservableProperty]
-    private string _loginMessage = string.Empty;
-
     public LoginViewModel(ILoginService loginService, IServiceProvider serviceProvider, ILogger<LoginViewModel> logger)
     {
         _loginService = loginService;
@@ -34,13 +31,13 @@ public partial class LoginViewModel : ObservableObject
         var user = await _loginService.LoginAsync(Email, Password);
         if (user is not null)
         {
-            LoginMessage = "Login successful";
+            await Shell.Current.DisplayAlert("Success", "Login successful", "OK");
             var mainPage = _serviceProvider.GetRequiredService<MainPage>();
             await Shell.Current.GoToAsync("//MainPage", true);
         }
         else
         {
-            LoginMessage = "Invalid email or password";
+            await Shell.Current.DisplayAlert("Error", "Login failed", "OK");
         }
     }
     

@@ -18,8 +18,6 @@ namespace WowQuiz.ViewModels
         [ObservableProperty]
         private string _password = string.Empty;
 
-        [ObservableProperty]
-        private string _registrationMessage = string.Empty;
 
         public RegisterViewModel(IRegisterService registerService)
         {
@@ -33,12 +31,12 @@ namespace WowQuiz.ViewModels
 
             if (success)
             {
-                RegistrationMessage = "Registration successful! Please log in.";
+                await Shell.Current.DisplayAlert("Success", "Registration successful", "OK");
                 await navigation.PopAsync(); // Go back to the login page
             }
             else
             {
-                RegistrationMessage = "Email already exists. Please use a different email.";
+                await Shell.Current.DisplayAlert("Error", "Registration failed", "OK");
             }
         }
     }
