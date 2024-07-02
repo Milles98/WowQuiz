@@ -18,12 +18,11 @@ namespace WowQuiz
             var quizPage = _serviceProvider.GetRequiredService<QuizPage>();
             await Navigation.PushAsync(quizPage);
         }
-        
+
         private async void OnProfileButtonClicked(object sender, EventArgs e)
         {
             var profilePage = _serviceProvider.GetRequiredService<ProfilePage>();
             await Navigation.PushAsync(profilePage);
         }
     }
-
 }
