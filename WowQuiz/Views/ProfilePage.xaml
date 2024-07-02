@@ -1,55 +1,31 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="WowQuiz.Views.ProfilePage"
              xmlns:vm="clr-namespace:WowQuiz.ViewModels"
-             x:DataType="vm:ProfileViewModel">
+             x:Class="WowQuiz.Views.ProfilePage"
+             x:DataType="vm:ProfileViewModel"
+             Title="Profile">
 
-    <Grid RowDefinitions="*, *, *, *, *, *, *, *, *"
-          ColumnDefinitions="*">
-
+    <ScrollView>
         <StackLayout Padding="20">
-            <Label Grid.Row="0" 
-                   Text="Welcome to your profilepage"
-                   Margin="0, 0, 0, 30"
-                   FontSize="24"/>
-            
-            <!--Username-->
-            <Label Grid.Row="1" Text="Name"
-                   Margin="4, 0, 0, 0"
-                   FontAttributes="Bold"
-                   FontSize="18"/>
-            <Entry Grid.Row="2" Text="{Binding Name, Mode=TwoWay}" Placeholder="Name"/>
+            <Label Text="Profile Information" FontSize="Large" FontAttributes="Bold" HorizontalOptions="Center"/>
 
-            <!--Password-->
-            <Label Grid.Row="3" Text="Password"
-                   Margin="4, 20, 0, 0"
-                   FontAttributes="Bold"
-                   FontSize="18"/>
-            <Entry Grid.Row="4" Text="{Binding Password, Mode=TwoWay}" Placeholder="Password"/>
+            <Label Text="Name" />
+            <Entry Text="{Binding Name}" Placeholder="Enter your name"/>
 
-            <!--Email-->
-            <Label Grid.Row="5" Text="Email"
-                   Margin="4, 20, 0, 0"
-                   FontAttributes="Bold"
-                   FontSize="18"/>
-            <Entry Grid.Row="6" Text="{Binding Email, Mode=TwoWay}" Placeholder="Email"/>
+            <Label Text="Email" />
+            <Entry Text="{Binding Email}" Placeholder="Enter your email" Keyboard="Email"/>
 
-            <!--Role-->
-            <Label Grid.Row="7" Text="Role"
-                   Margin="4, 20, 0, 0"
-                   FontAttributes="Bold"
-                   FontSize="18"/>
-            <Entry Grid.Row="8" Text="{Binding Role, Mode=TwoWay}" Placeholder="Role"/>
+            <Label Text="Password" />
+            <Entry Text="{Binding Password}" Placeholder="Enter your password" IsPassword="True"/>
 
-            <Button Grid.Row="9" Text="Save Changes"
-                    Margin="0, 30, 0, 0"
-                    Command="{Binding SaveChangesCommand}"/>
+            <Label Text="Role" />
+            <Entry Text="{Binding Role}" Placeholder="Enter your role"/>
+
+            <Button Text="Save Changes" Command="{Binding SaveChangesCommand}" Margin="0,20,0,0"/>
         </StackLayout>
-
-    </Grid>
-    
-    
+    </ScrollView>
 
 </ContentPage>
+    
+

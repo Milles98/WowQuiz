@@ -14,6 +14,9 @@ namespace WowQuiz.ViewModels
         private readonly IProfileService _profileService;
 
         [ObservableProperty]
+        private int id;
+
+        [ObservableProperty]
         private string name;
 
         [ObservableProperty]
@@ -36,6 +39,7 @@ namespace WowQuiz.ViewModels
             var user = await _profileService.GetCurrentUserAsync();
             if (user != null)
             {
+                Id = user.Id;
                 Name = user.Name;
                 Email = user.Email;
                 Password = user.Password; // Note: Consider security implications
