@@ -29,7 +29,8 @@
                     BackgroundColor="#28a745"
                     TextColor="White"
                     CornerRadius="5"
-                    Margin="0,0,0,10"/>
+                    Margin="0,0,0,10"
+                    IsEnabled="{Binding IsEmailValid}"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
