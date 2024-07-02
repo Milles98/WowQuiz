@@ -22,7 +22,8 @@
             <Label Text="Role" />
             <Entry Text="{Binding Role}" Placeholder="Enter your role"/>
 
-            <Button Text="Save Changes" Command="{Binding SaveChangesCommand}" Margin="0,20,0,0"/>
+            <Button Text="Save Changes" Command="{Binding SaveChangesCommand}" Margin="0,20,0,0"
+                    IsEnabled="{Binding IsEmailValid}"/>
         </StackLayout>
     </ScrollView>
 
