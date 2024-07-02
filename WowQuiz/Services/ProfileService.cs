@@ -15,8 +15,7 @@ namespace WowQuiz.Services
 
         public async Task<User> GetCurrentUserAsync()
         {
-            // Assuming you have a way to get the current user's ID
-            var userId = GetCurrentUserId();
+            var userId = GetCurrentUserId(); //fixa
             var user = await _context.Users.FindAsync(userId);
             return user;
         }
@@ -29,7 +28,7 @@ namespace WowQuiz.Services
             {
                 user.Name = name;
                 user.Email = email;
-                user.Password = password; // Consider hashing the password
+                user.Password = password;
                 user.Role = role;
 
                 _context.Users.Update(user);
@@ -41,8 +40,7 @@ namespace WowQuiz.Services
 
         private int GetCurrentUserId()
         {
-            // Implement logic to retrieve the current user's ID
-            // This is just a placeholder implementation
+            //fixa
             return 1;
         }
     }
